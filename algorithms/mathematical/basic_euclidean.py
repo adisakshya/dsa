@@ -1,4 +1,8 @@
 """
+Time complexity: O(Log min(x, y))
+"""
+
+"""
 function to compute gcd
 using basic euclidean algorithm
 """
