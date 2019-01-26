@@ -1,3 +1,6 @@
+# python script that computes GCD of two numbers
+# using extended euclidean algorithm
+
 """
 Time complexity: O(Log min(x, y))
 """
