@@ -59,6 +59,8 @@ class array_stack():
     # It increase the size of stack by 1
     def push(self, item):
         self.stack.append(item)
+        # return top element
+        return self.stack[-1]
 
     # Function to remove an item form stack
     # It decrease the size of stack by 1
@@ -72,7 +74,8 @@ class array_stack():
         if self.is_empty():
             # return minus infinite
             return str(-maxsize-1)
-        return self.stack[len(self.stack) - 1]
+        # return top element
+        return self.stack[-1]
 
 
 """
@@ -108,11 +111,13 @@ class linked_list_stack():
         new_node = Node(item)
         new_node.next = self.head
         self.head = new_node
+        return new_node.info
     
     # Function to pop element from stack
     def pop(self):
         if self.is_empty():
-            return False
+            # return minus infinite
+            return str(-maxsize-1)
         
         temp = self.head
         self.head = self.head.next
