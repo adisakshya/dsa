@@ -73,3 +73,54 @@ class array_stack():
             # return minus infinite
             return str(-maxsize-1)
         return self.stack[len(self.stack) - 1]
+
+
+"""
+Implementation using Linked List
+
+PROS:
+- Dynamic
+
+CONS:
+- Require more space as pointers are involved
+"""
+
+# Class for stack node
+class Node():
+
+    def __init__(self, item):
+        self.info = item
+        self.next = None
+
+# Stack using linked lists
+class linked_list_stack():
+
+    # constructor creating an empty stack
+    def __init__(self):
+        self.head = None
+
+    # Function to check if stack is empty
+    def is_empty(self):
+        return self.head is None
+    
+    # Function to push new item in the stack
+    def push(self, item):
+        new_node = Node(item)
+        new_node.next = self.head
+        self.head = new_node
+    
+    # Function to pop element from stack
+    def pop(self):
+        if self.is_empty():
+            return False
+        
+        temp = self.head
+        self.head = self.head.next
+        popped = temp.info
+        return popped
+    
+    # Function to return top-most element from stack
+    def top(self):
+        if self.is_empty():
+            return False
+        return self.head.info
