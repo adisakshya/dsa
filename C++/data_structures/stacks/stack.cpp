@@ -61,32 +61,33 @@ class array_stack {
 /* Function to add an item to stack
 *  It increase size of stack by 1
 */
-bool array_stack::push(int item) {
+int array_stack::push(int item) {
 
     if(top >= (MAX-1)) {
         // Overflow condition
-        return false;
+        return INT_MIN;
     }
 
     // Insert item
     stack[++top] = item;
-    return true;
+    return stack[top];
 
 }
 
 /* Function to remove an item to stack
 *  It decrease size of stack by 1
 */
-bool array_stack::pop() {
+int array_stack::pop() {
 
     if(top < 0) {
         // Underflow condition
-        return false;
+        return INT_MIN;
     }
 
     // Delete item
+    int popped = stack[top];
     top--;
-    return true;
+    return popped;
 
 }
 
@@ -94,8 +95,8 @@ bool array_stack::pop() {
 int array_stack::top() {
 
     if(top < 0) {
-        // Empty array_stack
-        return 0;
+        // Empty stack
+        return INT_MIN;
     }
 
     // return top element
