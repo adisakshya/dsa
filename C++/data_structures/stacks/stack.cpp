@@ -51,9 +51,9 @@ class array_stack {
         }
 
         // stack operations
-        bool push(int item);
-        bool pop();
-        int top();
+        int push(int item);
+        int pop();
+        int get_top();
         bool is_empty();
 
 };
@@ -92,7 +92,7 @@ int array_stack::pop() {
 }
 
 /* Function to return top element of stack */
-int array_stack::top() {
+int array_stack::get_top() {
 
     if(top < 0) {
         // Empty stack
@@ -109,4 +109,71 @@ bool array_stack::is_empty() {
 
     return top < 0;
 
+}
+
+
+/* Implementation of stack using linked lists */
+class Node {
+    public:
+        int info;
+        Node* next;
+};
+
+class linked_list_stack {
+        
+        Node * head;    
+        
+    public:
+    
+        linked_list_stack() {
+            Node * head = NULL;
+        }
+        
+        int push(int item);
+        int pop();
+        int top();
+        bool is_empty();
+
+};
+
+int linked_list_stack::push(int item) {
+
+    Node * new_node = new Node;
+    new_node->info = item;
+    new_node->next = NULL;
+
+    if(is_empty()) {
+        head = new_node;
+        return new_node->info;
+    }
+
+    new_node->next = head;
+    head = new_node;
+    return new_node->info;
+}
+
+int linked_list_stack::pop() {
+
+    if(is_empty()) {
+        return INT_MIN;
+    }
+
+    Node * temp = head;
+    head = head->next;
+    int popped = temp->info;
+    free(temp);
+    return popped;
+}
+
+int linked_list_stack::top() {
+
+    if(is_empty()) {
+        return INT_MIN;
+    }
+
+    return head->info;
+}
+
+bool linked_list_stack::is_empty() {
+    return head == NULL;
 }
