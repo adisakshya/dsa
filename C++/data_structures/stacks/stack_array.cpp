@@ -35,7 +35,7 @@ IMPLEMENTATION WAYS:
 using namespace std;
 
 // Implementation of stack using array
-class array_stack {
+class stack {
 
     // top counter
     int top;
@@ -46,7 +46,7 @@ class array_stack {
         int stack[MAX];
         
         // constructor
-        array_stack() {
+        stack() {
             top = -1;
         }
 
@@ -61,7 +61,7 @@ class array_stack {
 /* Function to add an item to stack
 *  It increase size of stack by 1
 */
-int array_stack::push(int item) {
+int stack::push(int item) {
 
     if(top >= (MAX-1)) {
         // Overflow condition
@@ -77,7 +77,7 @@ int array_stack::push(int item) {
 /* Function to remove an item to stack
 *  It decrease size of stack by 1
 */
-int array_stack::pop() {
+int stack::pop() {
 
     if(top < 0) {
         // Underflow condition
@@ -92,7 +92,7 @@ int array_stack::pop() {
 }
 
 /* Function to return top element of stack */
-int array_stack::get_top() {
+int stack::get_top() {
 
     if(top < 0) {
         // Empty stack
@@ -105,75 +105,8 @@ int array_stack::get_top() {
 }
 
 /* Function to check if stack is empty */
-bool array_stack::is_empty() {
+bool stack::is_empty() {
 
     return top < 0;
 
-}
-
-
-/* Implementation of stack using linked lists */
-class Node {
-    public:
-        int info;
-        Node* next;
-};
-
-class linked_list_stack {
-        
-        Node * head;    
-        
-    public:
-    
-        linked_list_stack() {
-            Node * head = NULL;
-        }
-        
-        int push(int item);
-        int pop();
-        int top();
-        bool is_empty();
-
-};
-
-int linked_list_stack::push(int item) {
-
-    Node * new_node = new Node;
-    new_node->info = item;
-    new_node->next = NULL;
-
-    if(is_empty()) {
-        head = new_node;
-        return new_node->info;
-    }
-
-    new_node->next = head;
-    head = new_node;
-    return new_node->info;
-}
-
-int linked_list_stack::pop() {
-
-    if(is_empty()) {
-        return INT_MIN;
-    }
-
-    Node * temp = head;
-    head = head->next;
-    int popped = temp->info;
-    free(temp);
-    return popped;
-}
-
-int linked_list_stack::top() {
-
-    if(is_empty()) {
-        return INT_MIN;
-    }
-
-    return head->info;
-}
-
-bool linked_list_stack::is_empty() {
-    return head == NULL;
 }
