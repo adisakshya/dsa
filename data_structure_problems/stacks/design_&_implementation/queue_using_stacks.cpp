@@ -6,13 +6,13 @@ class StackQueue {
         stack<int> s1;
         stack<int> s2;
     public:
-        void push(int B);
-        int pop();
+        void enqueue(int B);
+        int dequeue();
         int get_front();
         int get_rear();
 };
 
-void StackQueue :: push(int x)
+void StackQueue :: enqueue(int x)
  {
     
     while(!s1.empty()) {
@@ -29,7 +29,7 @@ void StackQueue :: push(int x)
     }
 }
 
-int StackQueue :: pop()
+int StackQueue :: dequeue()
 {
     
     if(s1.empty()) {
