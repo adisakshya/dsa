@@ -129,7 +129,7 @@ bool search(Node *head_ref, int info) {
     return false;  
 }  
 
-int get_node(Node *head_ref, int index) {  
+int get_n_node(Node *head_ref, int index) {  
       
     Node *current = head_ref;  
       
@@ -143,6 +143,166 @@ int get_node(Node *head_ref, int index) {
     }  
   
     return INT_MIN;    
+}
+
+int get_n_last_node(Node *head_ref, int index) {  
+      
+    Node *current = head_ref;  
+    int length = list_length(head);
+
+    int index = 0;
+    while (current != NULL) {  
+        if (index == (length - index + 1)) {
+            return(current->data);
+        }  
+        index++;  
+        current = current->next;  
+    }  
+  
+    return INT_MIN;    
+}
+
+int middle_node(Node *head_ref) {  
+      
+    Node *slow = head_ref, *fast = head_ref;  
+
+    while(fast->next != NULL && fast != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return slow->data;
+}
+
+int count(Node *head_ref, int key) {
+    Node *current = head_ref;
+    int count = 0;
+    while(current != NULL) {
+        if(current->data == key) {
+            count++;
+        }
+        current = current->next;
+    }
+    return count;
+} 
+
+bool detect_loop(Node *head_ref) {
+    unordered_set<Node *> node_map;
+    Node *current = head_ref;
+
+    while(current != NULL) {
+        if(node_map.find(current) == node_map.end()) {
+            return true;
+        } else {
+            node_map.insert(current);
+        }
+        current = current->next;
+    }
+
+    return false;
+}
+
+bool floyd_warshall_cycle_detection(Node *head_ref) {
+    Node *slow = head_ref;
+    Node *fast = head_ref;
+
+    while(fast != NULL && fast->next != NULL) {
+        if(slow == fast) {
+            return true;
+        }
+        
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+
+    return false;
+}
+
+int loop_length(Node *head_ref) {
+    
+    if(!detect_loop(head_ref)) {
+        return INT_MIN;
+    }
+    
+    Node *slow = head_ref;
+    Node *fast = head_ref;
+
+    while(fast != NULL && fast->next != NULL) {
+        if(slow == fast) {
+            return list_length(slow_ptr);
+        }
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    return INT_MIN;
+}
+
+bool compare_lists(Node *head_ref_1, Node *head_ref_2) {
+    
+    Node *current_1 = head_ref_1;
+    Node *current_2 = head_ref_2;
+
+    while(current_1 != NULL && current_2 != NULL) {
+        if(current_1->data != current_2->data) {
+            return false;
+        }
+        current_1 = current_1->next;
+        current_2 = current_2->next;
+    }
+
+    return true
+}
+
+bool is_palindrome(Node *head_ref) {
+    
+    stack <Node *> node_stack;
+    Node *current = head_ref;
+
+    while(current != NULL) {
+        if(node_stack.top() == current) {
+            node_stack.pop();
+        } else {
+            node_stack.push(current);
+        }
+        current = current->next;
+    }
+
+    if(node_stack.empty()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+void remove_duplicates_sorted(Node *head_ref) {
+    Node *current = head_ref;
+
+    while(current != NULL) {
+        if(current->data == current->next->data) {
+            Node *next_next = current->next->next;
+            current->next->next = NULL;
+            free(current->next);
+            current->next = next_next;
+        } else {
+            current = current->next;
+        }
+    }
+}
+
+void remove_duplicates_unsorted(Node *head_ref) {
+    Node *current = head_ref, *prev;
+    unorderd_set <int> seen_nodes;
+
+    while(current != NULL) {
+        if(seen_nodes.find(current->data) != seen_nodes.end()) {
+            prev->next = current->next;
+            free(current);
+        } else {
+            seen_nodes.insert(current->data);
+            prev = current;
+        }
+        current = prev->next;
+    }
 }
 
 // int main()  
