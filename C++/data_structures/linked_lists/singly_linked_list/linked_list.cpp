@@ -191,7 +191,7 @@ bool detect_loop(Node *head_ref) {
     Node *current = head_ref;
 
     while(current != NULL) {
-        if(node_map.find(current) == node_map.end()) {
+        if(node_map.find(current) != node_map.end()) {
             return true;
         } else {
             node_map.insert(current);
