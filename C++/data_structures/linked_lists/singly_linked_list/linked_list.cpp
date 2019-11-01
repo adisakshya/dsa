@@ -265,23 +265,25 @@ bool compare_lists(Node *head_ref_1, Node *head_ref_2) {
 
 bool is_palindrome(Node *head_ref) {
     
-    stack <Node *> node_stack;
-    Node *current = head_ref;
+    Node *slow = head_ref; 
+  
+    stack <int> s; 
+    
+    while(slow != NULL) { 
+        s.push(slow->data); 
 
-    while(current != NULL) {
-        if(node_stack.top() == current) {
-            node_stack.pop();
-        } else {
-            node_stack.push(current);
-        }
-        current = current->next;
-    }
+        slow = slow->next; 
+    } 
 
-    if(node_stack.empty()) {
-        return true;
-    } else {
-        return false;
+    while(head_ref != NULL ) { 
+        int i = s.top(); 
+        s.pop(); 
+        if(head_ref->data != i) { 
+            return false; 
+        } 
+        head_ref = head_ref->next; 
     }
+    return true; 
 }
 
 void remove_duplicates_sorted(Node *head_ref) {
