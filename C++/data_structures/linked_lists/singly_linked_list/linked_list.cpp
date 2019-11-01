@@ -207,15 +207,25 @@ bool floyd_warshall_cycle_detection(Node *head_ref) {
     Node *fast = head_ref;
 
     while(fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next->next;
+
         if(slow == fast) {
             return true;
         }
-        
-        slow = slow->next;
-        fast = fast->next->next;
     }
 
     return false;
+}
+
+int loop_list_length(Node *head_ref) {  
+    int count = 1;  
+    Node *current = head_ref;  
+    while (current->next != head_ref) {  
+        count++;  
+        current = current->next;  
+    }  
+    return count;  
 }
 
 int loop_length(Node *head_ref) {
@@ -229,7 +239,7 @@ int loop_length(Node *head_ref) {
 
     while(fast != NULL && fast->next != NULL) {
         if(slow == fast) {
-            return list_length(slow_ptr);
+            return loop_list_length(slow);
         }
         slow = slow->next;
         fast = fast->next->next;
