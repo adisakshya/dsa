@@ -129,13 +129,13 @@ bool search(Node *head_ref, int info) {
     return false;  
 }  
 
-int get_n_node(Node *head_ref, int index) {  
+int get_n_node(Node *head_ref, int req_index) {  
       
     Node *current = head_ref;  
       
     int index = 0;  
     while (current != NULL) {  
-        if (index == index) {
+        if (index == req_index) {
             return(current->data);
         }  
         index++;  
@@ -145,14 +145,14 @@ int get_n_node(Node *head_ref, int index) {
     return INT_MIN;    
 }
 
-int get_n_last_node(Node *head_ref, int index) {  
+int get_n_last_node(Node *head_ref, int req_index) {  
       
     Node *current = head_ref;  
     int length = list_length(head);
 
     int index = 0;
     while (current != NULL) {  
-        if (index == (length - index + 1)) {
+        if (index == (length - req_index + 1)) {
             return(current->data);
         }  
         index++;  
