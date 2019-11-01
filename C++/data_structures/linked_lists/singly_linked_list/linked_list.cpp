@@ -166,7 +166,7 @@ int middle_node(Node *head_ref) {
       
     Node *slow = head_ref, *fast = head_ref;  
 
-    while(fast->next != NULL && fast != NULL) {
+    while(fast != NULL && fast->next != NULL) {
         slow = slow->next;
         fast = fast->next->next;
     }
