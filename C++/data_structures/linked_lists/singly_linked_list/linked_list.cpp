@@ -305,6 +305,90 @@ void remove_duplicates_unsorted(Node *head_ref) {
     }
 }
 
+void swap_nodes(Node **head_ref, int key1, int key2) {
+    Node *current = (*head_ref), *prev1 = NULL, *prev2 = NULL, *prev = NULL;
+
+    while(current != NULL) {
+        if(current->data == key1) {
+            prev1 = prev;
+        } else if(current->data == key2) {
+            prev2 = prev;
+        }
+
+        prev = current;
+        current = current->next;
+    }
+
+    Node *node1 = prev1->next, *node2 = prev2->next;
+    node1->next = node2->next;
+    node2->next = node1->next->next;
+
+    prev1->next = node1;
+    prev2->next = node2;
+
+    if(prev1 == NULL) {
+        (*head_ref) = node2;   
+    } else if(prev2 == NULL) {
+        (*head_ref) = node1;
+    }
+
+}
+
+void make_last_first(Node *head_ref) {
+    Node *current = (*head_ref), *prev = NULL;
+    
+    if((*head_ref) == NULL || (*head_ref)->next == NULL) {
+        return;
+    }
+
+    while(current->next != NULL) {
+        prev = current;
+        current = current->next;
+    }
+
+    prev->next = NULL;
+    current->next = (*head_ref);
+    (*head_ref) = current;
+
+}
+
+void intersection_point(Node *head_ref_1, Node *head_ref_2) {
+
+    int len1 = list_length(head_ref_1);
+    int len2 = list_length(head_ref_2);
+    
+    int k = (len1 > len2) ? (len1 - len2) : (len2 - len1);
+    int flag = (len1 > len2) ? 1 : 2;
+
+    Node *current1 = head_ref_1, *current2 = head_ref_2;
+    while(k--) {
+        if(flag == 1) {
+            current1 = current1->next;
+        } else if(flag == 2) {
+            current2 = current2->next;
+        }
+    } 
+
+    if(flag == 1) {
+        return current1->next->data;
+    } else if(flag == 2) {
+        return current2->next->data;
+    }
+}
+
+void reverse(Node **head_ref) {
+    Node *current = (*head_ref), *prev = NULL, *next_node = NULL;
+
+    while(current != NULL) {
+        next_node = current->next;
+        current->next = prev;
+        prev = current;
+        current = next_node;
+    }
+
+    (*head_ref) = prev;
+}
+
 // int main()  
 // {  
 //     /* Start with the empty list */
