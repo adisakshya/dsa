@@ -389,8 +389,8 @@ void intersection_point(Node *head_ref_1, Node *head_ref_2) {
     }
 }
 
-void reverse(Node **head_ref) {
-    Node *current = (*head_ref), *prev = NULL, *next_node = NULL;
+void reverse(Node *head_ref) {
+    Node *current = (head_ref), *prev = NULL, *next_node = NULL;
 
     while(current != NULL) {
         next_node = current->next;
@@ -399,7 +399,7 @@ void reverse(Node **head_ref) {
         current = next_node;
     }
 
-    (*head_ref) = prev;
+    (head_ref) = prev;
 }
 
 // int main()  
