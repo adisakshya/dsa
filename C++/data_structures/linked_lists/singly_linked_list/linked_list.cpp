@@ -289,12 +289,13 @@ bool is_palindrome(Node *head_ref) {
 void remove_duplicates_sorted(Node *head_ref) {
     Node *current = head_ref;
 
-    while(current != NULL) {
+    while(current != NULL && current->next != NULL) {
         if(current->data == current->next->data) {
             Node *next_next = current->next->next;
             current->next->next = NULL;
-            free(current->next);
+            Node *temp = current->next;
             current->next = next_next;
+            free(temp);
         } else {
             current = current->next;
         }
