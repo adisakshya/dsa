@@ -365,7 +365,7 @@ void make_last_first(Node *head_ref) {
 
 }
 
-void intersection_point(Node *head_ref_1, Node *head_ref_2) {
+int intersection_point(Node *head_ref_1, Node *head_ref_2) {
 
     int len1 = list_length(head_ref_1);
     int len2 = list_length(head_ref_2);
@@ -380,12 +380,16 @@ void intersection_point(Node *head_ref_1, Node *head_ref_2) {
         } else if(flag == 2) {
             current2 = current2->next;
         }
-    } 
-
-    if(flag == 1) {
-        return current1->next->data;
-    } else if(flag == 2) {
-        return current2->next->data;
+    }
+    
+    while(current1 != NULL && current2 != NULL) {
+        
+        if(current1->data == current2->data) {
+            return current1->data;
+        }
+        
+        current1 = current1->next;
+        current2 = current2->next;
     }
 }
 
