@@ -36,7 +36,7 @@ void swap(int *x, int *y) {
     
 }
 
-/* Insertion Sort */
+/* Bubble Sort */
 void bubble_sort(int arr[], int n) {
 
     for(int i=0; i<n-1; i++) {
