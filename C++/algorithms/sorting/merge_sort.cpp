@@ -1,7 +1,7 @@
 /**
  * Merge Sort
  * 
- * Sort a sequence of numbers (integers) using insertion sort.
+ * Sort a sequence of numbers (integers) using merge sort.
  * 
  * Complexity
  * 

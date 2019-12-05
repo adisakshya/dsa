@@ -1,7 +1,7 @@
 /**
  * Bubble Sort
  * 
- * Sort a sequence of numbers (integers) using insertion sort.
+ * Sort a sequence of numbers (integers) using Bubble sort.
  * 
  * Complexity
  * 
