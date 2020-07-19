@@ -14,4 +14,5 @@ int main() {
     int num = 3;
     cout << "Doing fun" << endl;
     fun(num);
+    return 0;
 }
