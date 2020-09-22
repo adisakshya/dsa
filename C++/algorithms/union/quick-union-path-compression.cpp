@@ -46,6 +46,9 @@ class Union {
 
         // Function to connect two nodes
         void make_union(int p, int q) {
+            if(connected(p, q)) {
+                return;    
+            }
             // Change root of smaller tree to point to root of larger tree
             int proot = root(p);
             int qroot = root(q);

@@ -38,6 +38,9 @@ class Union {
 
         // Function to connect two nodes
         void make_union(int p, int q) {
+            if(connected(p, q)) {
+                return;    
+            }
             int pid = ids[p];
             int qid = ids[q];
             for(int i=0; i<size; i++) {
