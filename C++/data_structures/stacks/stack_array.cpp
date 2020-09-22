@@ -35,7 +35,7 @@ IMPLEMENTATION WAYS:
 using namespace std;
 
 // Implementation of stack using array
-class stack {
+class Stack {
 
     // top counter
     int top;
@@ -46,7 +46,7 @@ class stack {
         int stack[MAX];
         
         // constructor
-        stack() {
+        Stack() {
             top = -1;
         }
 
@@ -61,7 +61,7 @@ class stack {
 /* Function to add an item to stack
 *  It increase size of stack by 1
 */
-int stack::push(int item) {
+int Stack::push(int item) {
 
     if(top >= (MAX-1)) {
         // Overflow condition
@@ -77,7 +77,7 @@ int stack::push(int item) {
 /* Function to remove an item to stack
 *  It decrease size of stack by 1
 */
-int stack::pop() {
+int Stack::pop() {
 
     if(top < 0) {
         // Underflow condition
@@ -92,7 +92,7 @@ int stack::pop() {
 }
 
 /* Function to return top element of stack */
-int stack::get_top() {
+int Stack::get_top() {
 
     if(top < 0) {
         // Empty stack
@@ -105,7 +105,7 @@ int stack::get_top() {
 }
 
 /* Function to check if stack is empty */
-bool stack::is_empty() {
+bool Stack::is_empty() {
 
     return top < 0;
 

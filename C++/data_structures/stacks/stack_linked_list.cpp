@@ -41,13 +41,13 @@ class Node {
         Node* next;
 };
 
-class stack {
+class Stack {
         
         Node * head;    
         
     public:
     
-        stack() {
+        Stack() {
             Node * head = NULL;
         }
         
@@ -58,7 +58,7 @@ class stack {
 
 };
 
-int stack::push(int item) {
+int Stack::push(int item) {
 
     Node * new_node = new Node;
     new_node->info = item;
@@ -74,7 +74,7 @@ int stack::push(int item) {
     return new_node->info;
 }
 
-int stack::pop() {
+int Stack::pop() {
 
     if(is_empty()) {
         return INT_MIN;
@@ -87,7 +87,7 @@ int stack::pop() {
     return popped;
 }
 
-int stack::top() {
+int Stack::top() {
 
     if(is_empty()) {
         return INT_MIN;
@@ -96,6 +96,6 @@ int stack::top() {
     return head->info;
 }
 
-bool stack::is_empty() {
+bool Stack::is_empty() {
     return head == NULL;
 }
