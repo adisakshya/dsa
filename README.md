@@ -1,2 +1,1 @@
-# redesigned-algos
-Data Structures and Algorithms
+Repository is home to my solutions for DSA problems
